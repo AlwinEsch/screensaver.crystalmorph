@@ -226,17 +226,18 @@ extern "C" void Render()
   settings.fractal->Render();
 }
 
+void Stop()
+{
+}
+
 // XBMC tells us to stop the screensaver
 // we should free any memory and release
 // any resources we have created.
-extern "C" void ADDON_Stop()
-{
-  delete settings.fractal;
-  delete settings.fractalcontroller;
-}
 
 extern "C" void ADDON_Destroy()
 {
+  delete settings.fractal;
+  delete settings.fractalcontroller;
 }
 
 extern "C" ADDON_STATUS ADDON_GetStatus()
