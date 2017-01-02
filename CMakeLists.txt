@@ -9,7 +9,7 @@ enable_language(CXX)
 find_package(Kodi REQUIRED)
 find_package(OpenGL REQUIRED)
 
-include_directories(${KODI_INCLUDE_DIR})
+include_directories(${KODI_INCLUDE_DIR}/..) # Hack way with "/..", need bigger Kodi cmake rework to match right include ways
 
 set(CRYSTALMORPH_SOURCES src/fractalcontroller.cpp
                          src/Fractal.cpp
