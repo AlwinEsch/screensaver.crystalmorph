@@ -1,8 +1,16 @@
 <settings>
-  <setting id="numstars"   label="30000" type="slider" option="int" range="100,100,10000" default="1000"/>
-  <setting id="gamma"      label="30001" type="slider" option="float" range="0.01,0.01,2.0" default="1.0"/>
-  <setting id="brightness" label="30002" type="slider" option="float" range="0.01,0.01,1.0" default="0.2"/>
-  <setting id="speed"      label="30003" type="slider" option="float" range="1,0.1,50" default="20.0"/>
-  <setting id="zoom"       label="30004" type="slider" option="float" range="0.1,0.1,10.0" default="1.5"/>
-  <setting id="expanse"    label="30005" type="slider" option="float" range="0.1,0.1,10.0" default="1.5"/>
+  <!-- this is the maximum number of objects allowed on the screen -->
+  <!-- the depth will be decreased to keep the count below this value -->
+  <setting id="maxobjects"      label="30000" type="slider" option="int" range="100,100,10000" default="2000"/>
+  <!-- how many iterations of the object are we allowed to render -->
+  <!-- the number of things to render increases exponentially with the depth -->
+  <setting id="maxcutoffdepth"  label="30001" type="slider" option="int" range="1,1,10" default="5"/>
+  <!-- this is the morphtime in seconds (@60fps) -->
+  <setting id="morphspeed"      label="30002" type="slider" option="float" range="1.00,0.5,10.0" default="3.0"/>
+  <!-- number of seconds to display the "animation phase" -->
+  <setting id="animationtime"   label="30003" type="slider" option="int" range="1,1,100" default="50"/>
+  <!-- number of seconds between morphs -->
+  <setting id="transitiontime"  label="30004" type="slider" option="float" range="0.1,0.5,20.0" default="8.5"/>
+  <!-- chance of a preset vs. random shape occuring -->
+  <setting id="presetchance"    label="30005" type="slider" option="float" range="0.1,0.1,1.0" default="0.3"/>
 </settings>

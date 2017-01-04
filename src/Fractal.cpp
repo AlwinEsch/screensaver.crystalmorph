@@ -21,6 +21,7 @@
 
 
 #include <kodi/screensaver/Screensaver.h>
+#include <kodi/General.h>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -71,8 +72,19 @@ CScreensaverCrystalMorph::CScreensaverCrystalMorph()
   m_lightDir = CVector(-0.5f, -0.5f, 0.5f);
   m_fRatio = (float)Width() / (float)Height();
 
-  SetCamera();
   SetDefaults();
+
+  kodi::GetSettingInt("maxobjects", m_settings.iMaxObjects);
+  kodi::GetSettingInt("maxcutoffdepth", m_settings.iMaxDepth);
+  kodi::GetSettingFloat("morphspeed", m_settings.morphSpeed);
+  kodi::GetSettingInt("animationtime", m_settings.animationTime);
+  kodi::GetSettingFloat("presetchance", m_settings.presetChance);
+  float time;
+  kodi::GetSettingFloat("transitiontime", time);
+  m_settings.transitionTime = time*60;
+  
+  SetCamera();
+
   m_settings.fractal = new Fractal();
   m_settings.fractalcontroller = new FractalController(m_settings.fractal, &m_settings);
   m_settings.fractalcontroller->SetMorphSpeed(m_settings.morphSpeed);
@@ -246,59 +258,3 @@ void CScreensaverCrystalMorph::SetDefaults()
 }
 
 ADDONCREATOR(CScreensaverCrystalMorph);
-
-// Load settings from the [screensavername].xml configuration file
-// the name of the screensaver (filename) is used as the name of
-// the xml file - this is sent to us by Kodi when the Init func
-// is called.
-//void LoadSettings()
-//{
-//        XmlNode node, childNode, grandChild;
-//        CXmlDocument doc;
-//        
-//         Set up the defaults
-//        SetDefaults();
-
-//        char szXMLFile[1024];
-//        strcpy(szXMLFile, "Q:\\screensavers\\");
-//        strcat(szXMLFile, g_szScrName);
-//        strcat(szXMLFile, ".xml");
-
-//        OutputDebugString("Loading XML: ");
-//        OutputDebugString(szXMLFile);
-
-//         Load the config file
-//        if (doc.Load(szXMLFile) >= 0)
-//        {
-//                node = doc.GetNextNode(XML_ROOT_NODE);
-//                while(node > 0)
-//                {
-//                        if (strcmpi(doc.GetNodeTag(node),"screensaver"))
-//                        {
-//                                node = doc.GetNextNode(node);
-//                                continue;
-//                        }
-//                        if (childNode = doc.GetChildNode(node,"maxobjects")){
-//        m_settings.iMaxObjects = atoi(doc.GetNodeText(childNode));
-//                        }
-//      if (childNode = doc.GetChildNode(node,"maxcutoffdepth")){
-//        m_settings.iMaxDepth = atoi(doc.GetNodeText(childNode));
-//                        }
-//      if (childNode = doc.GetChildNode(node,"morphspeed")){
-//        m_settings.morphSpeed = atof(doc.GetNodeText(childNode));
-//                        }
-//      if (childNode = doc.GetChildNode(node,"animationtime")){
-//        m_settings.animationTime = 60*atof(doc.GetNodeText(childNode));
-//                        }
-//      if (childNode = doc.GetChildNode(node,"transitiontime")){
-//        m_settings.nextTransition = m_settings.transitionTime = 60*atof(doc.GetNodeText(childNode));
-//                        }
-//      if (childNode = doc.GetChildNode(node,"presetchance")){
-//        m_settings.presetChance = atof(doc.GetNodeText(childNode));
-//                        }
-
-//                        node = doc.GetNextNode(node);
-//                }
-//                doc.Close();
-//        }
-//}

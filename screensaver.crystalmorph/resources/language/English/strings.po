@@ -13,25 +13,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgctxt "#30000"
-msgid "Number of stars"
+msgid "Max objects"
 msgstr ""
 
 msgctxt "#30001"
-msgid "Gamma"
+msgid "Max cutoff depth"
 msgstr ""
 
 msgctxt "#30002"
-msgid "Brightness"
+msgid "Morphtime in seconds"
 msgstr ""
 
 msgctxt "#30003"
-msgid "Speed"
+msgid "Animation time"
 msgstr ""
 
 msgctxt "#30004"
-msgid "Zoom"
+msgid "Number of seconds between morphs"
 msgstr ""
 
 msgctxt "#30005"
-msgid "Expanse"
+msgid "Chance of preset vs. random shape occuring"
 msgstr ""
